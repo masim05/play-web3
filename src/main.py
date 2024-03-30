@@ -13,7 +13,7 @@ if not wallet_address:
 web3 = Web3(Web3.HTTPProvider(rpc_url))
 print(f"Is connected: {web3.is_connected()}")
 
-print(f"gas price: {web3.eth.gas_price} BNB")  # кол-во Wei за единицу газа
+print(f"gas price: {web3.eth.gas_price} BNB")
 print(f"current block number: {web3.eth.block_number}")
 print(f"number of current chain is {web3.eth.chain_id}")
 
