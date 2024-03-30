@@ -12,22 +12,26 @@ Install dependencies (required once):
 ```bash
 pip install -r requirements.txt
 ```
+Provide `.env` file:
+```bash
+cp .env.example .env
+```
+RPC server url may be taken at [chainlist](https://chainlist.org/).
 
 ## How to run
 Connect to the chain and show some params:
 ```bash
-RPC_URL=<rpc server url> WALLET_ADDRESS=<wallet address starting with 0x> python src/chain.py
+python src/chain.py
 ```
-RPC server url may be taken at [chainlist](https://chainlist.org/).
 
 Show wallet balance:
 ```bash
-RPC_URL=<rpc server url> WALLET_ADDRESS=<wallet address starting with 0x> python src/wallet.py
+python src/wallet.py
 ```
 
 Show transaction status:
 ```bash
-RPC_URL=<rpc server url> TXN_HASH=<transaction hash> python src/txn.py
+python src/txn.py
 ```
 
 ## Credits
