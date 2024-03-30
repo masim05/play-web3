@@ -1,6 +1,9 @@
 import os
 import sys
+from dotenv import load_dotenv
 from web3 import Web3
+
+load_dotenv()
 
 rpc_url = os.environ.get('RPC_URL')
 if not rpc_url:
@@ -16,10 +19,3 @@ print(f"Is connected: {web3.is_connected()}")
 print(f"gas price: {web3.eth.gas_price} BNB")
 print(f"current block number: {web3.eth.block_number}")
 print(f"number of current chain is {web3.eth.chain_id}")
-
-balance = web3.eth.get_balance(wallet_address)
-print(f"Wallet {wallet_address}:")
-print(f"balance: {balance}")
-
-ether_balance = Web3.from_wei(balance, 'ether')
-print(f"eth balance: {ether_balance}")
