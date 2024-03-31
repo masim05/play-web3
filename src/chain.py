@@ -9,10 +9,6 @@ rpc_url = os.environ.get('RPC_URL')
 if not rpc_url:
     sys.exit('RPC_URL must be set')
 
-wallet_address = os.environ.get('WALLET_ADDRESS') 
-if not wallet_address:
-    sys.exit('WALLET_ADDRESS must be set')
-
 web3 = Web3(Web3.HTTPProvider(rpc_url))
 print(f"Is connected: {web3.is_connected()}")
 
