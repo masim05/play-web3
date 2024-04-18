@@ -8,17 +8,18 @@ ATTEMPTS=10
 RETRY_DELAY=5
 
 echolog () {
-    echo "$(date): $1";
+    echo "$(echo $WALLET | head -c 6)/$(date): $1";
 }
 
 notify_telegram () {
     [[ -z "${TG_TOKEN}" ]] && return;
     [[ -z "${TG_CHAT_ID}" ]] && return;
 
+    message="$(echo $WALLET | head -c 6)@$(hostname): $1"
     response_code=$(curl -X POST \
      -H 'Content-Type: application/json' \
      --write-out %{http_code} --output /dev/null \
-     -d '{"chat_id": "'"$TG_CHAT_ID"'", "text": "'"$1"'", "disable_notification": true}' \
+     -d '{"chat_id": "'"$TG_CHAT_ID"'", "text": "'"$message"'", "disable_notification": true}' \
      "https://api.telegram.org/bot$TG_TOKEN/sendMessage")
 
     [[ $response_code -ne 200 ]] && { echolog "Telegram notification failed."; }
@@ -32,10 +33,10 @@ for i in $(seq $ATTEMPTS); do
         --write-out %{http_code} --output /dev/null \
         --data-raw '{"address":"'"$WALLET"'"}');
 
-    [[ $response_code -eq 200 ]] && { echolog "Got HTTP 200 OK."; notify_telegram "$WALLET: got 200 OK."; exit 0; }
+    [[ $response_code -eq 200 ]] && { echolog "Got HTTP 200 OK."; notify_telegram "Got HTTP 200 OK."; exit 0; }
 
     sleep $RETRY_DELAY;
 done
 
 echolog "No luck after $ATTEMPTS attempts.";
-notify_telegram "$WALLET: no luck after $ATTEMPTS attempts.";
+notify_telegram "No luck after $ATTEMPTS attempts.";
