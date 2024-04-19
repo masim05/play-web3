@@ -1,14 +1,3 @@
-[[ -z "${FAUCET_URL}" ]] && { echolog "FAUCET_URL must be set, exiting."; exit 1; }
-[[ -z "${WALLET}" ]]     && { echolog "WALLET must be set, exiting."; exit 1; }
-
-[[ -z "${TG_TOKEN}" ]]   && echolog "TG_TOKEN not set, telegram notifications are disabled.";
-[[ -z "${TG_CHAT_ID}" ]] && echolog "TG_CHAT_ID not set, telegram notifications are disabled.";
-
-[[ -z "${PROXY}" ]]      && echolog "PROXY not set, exposing IP.";
-
-ATTEMPTS=10
-RETRY_DELAY=5
-
 echolog () {
     echo "$(echo $WALLET | head -c 6)/$(date): $1";
 }
@@ -26,6 +15,20 @@ notify_telegram () {
 
     [[ $response_code -ne 200 ]] && { echolog "Telegram notification failed."; }
 }
+
+[[ -z "${ENV_FILE}" ]] && { echolog "ENV_FILE must be set, exiting."; exit 1; }
+source $ENV_FILE
+
+[[ -z "${FAUCET_URL}" ]] && { echolog "FAUCET_URL must be set, exiting."; exit 1; }
+[[ -z "${WALLET}" ]]     && { echolog "WALLET must be set, exiting."; exit 1; }
+
+[[ -z "${TG_TOKEN}" ]]   && echolog "TG_TOKEN not set, telegram notifications are disabled.";
+[[ -z "${TG_CHAT_ID}" ]] && echolog "TG_CHAT_ID not set, telegram notifications are disabled.";
+
+[[ -z "${PROXY}" ]]      && echolog "PROXY not set, exposing IP.";
+
+ATTEMPTS=10
+RETRY_DELAY=5
 
 for i in $(seq $ATTEMPTS); do
     
