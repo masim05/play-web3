@@ -4,6 +4,8 @@
 [[ -z "${TG_TOKEN}" ]]   && echolog "TG_TOKEN not set, telegram notifications are disabled.";
 [[ -z "${TG_CHAT_ID}" ]] && echolog "TG_CHAT_ID not set, telegram notifications are disabled.";
 
+[[ -z "${PROXY}" ]]      && echolog "PROXY not set, exposing IP.";
+
 ATTEMPTS=10
 RETRY_DELAY=5
 
@@ -31,6 +33,7 @@ for i in $(seq $ATTEMPTS); do
         -H 'accept: */*' \
         -H 'content-type: application/json' \
         --write-out %{http_code} --output /dev/null \
+        $([[ -z "${PROXY}" ]] || echo "-x $PROXY") \
         --data-raw '{"address":"'"$WALLET"'"}');
 
     [[ $response_code -eq 200 ]] && { echolog "Got HTTP 200 OK."; notify_telegram "Got HTTP 200 OK."; exit 0; }
