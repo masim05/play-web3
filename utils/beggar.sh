@@ -42,7 +42,7 @@ RETRY_DELAY=5
 # Check if it is time to run
 # ============================
 
-[ $(( $(date +%s) / 360 % 25 )) -eq $HOUR ] || { echolog "It is not my turn, exiting..."; exit 0; }
+[ $(( $(date +%s) / 3600 % 25 )) -eq $HOUR ] || { echolog "It is not my turn, exiting..."; exit 0; }
 
 # ============================
 # Main logic
