@@ -96,6 +96,12 @@ NEW_BALANCE_NUM=`$EXECUTABLE q bank balances $ACCOUNT_ADDRESS \
 DENOM=agnet
 
 DELEGATE_AMOUNT=$(bc <<< "$NEW_BALANCE_NUM - 10000000000000000")
+if [[ $DELEGATE_AMOUNT =~ - ]]
+then
+    echolog "Nothing delegate: $DELEGATE_AMOUNT"
+    notify_telegram "Nothing delegate: $DELEGATE_AMOUNT"
+    exit 1
+fi
 
 $EXECUTABLE tx staking delegate $VALIDATOR_ADDRESS $DELEGATE_AMOUNT$DENOM --from $WALLET \
 --chain-id $CHAIN_ID --gas-prices $GAS_PRICES -y <<!
@@ -103,7 +109,7 @@ $PASSWORD
 !
 
 if [ $? -eq 0 ]; then
-    notify_telegram "Tryed to delegate."
+    notify_telegram "Tryed to delegate $DELEGATE_AMOUNT$DENOM"
 else
     notify_telegram "Failed to delegate."
 fi
