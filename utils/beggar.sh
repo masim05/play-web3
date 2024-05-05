@@ -35,8 +35,8 @@ source $ENV_FILE
 
 [[ -z "${HOUR}" ]]       && { echolog "HOUR not set, should be within 1..24. Using 0."; HOUR=0; }
 
-ATTEMPTS=10
-RETRY_DELAY=5
+ATTEMPTS=3
+RETRY_DELAY=10
 
 # ============================
 # Check if it is time to run
