@@ -43,6 +43,7 @@ source $ENV_FILE
 [[ -z "${PASSWORD}" ]]    && { echolog "PASSWORD must be set, exiting."; exit 1; }
 [[ -z "${GAS_PRICES}" ]]  && { echolog "GAS_PRICES must be set, exiting."; exit 1; }
 [[ -z "${DENOM}" ]]       && { echolog "DENOM must be set, exiting."; exit 1; }
+[[ -z "${GAS_BUFFER}" ]]  && { echolog "GAS_BUFFER must be set, exiting."; exit 1; }
 
 [[ -z "${TG_TOKEN}" ]]    && echolog "TG_TOKEN not set, telegram notifications are disabled.";
 [[ -z "${TG_CHAT_ID}" ]]  && echolog "TG_CHAT_ID not set, telegram notifications are disabled.";
@@ -75,7 +76,7 @@ do
     -o json | jq -r '.balances[0].amount'`
     [[ -z "${BALANCE}" ]] && { echolog "Couldn't get BALANCE, exiting."; exit 1; }
 
-    SEND_AMOUNT=$(bc <<< "$BALANCE - 10000000000000000")
+    SEND_AMOUNT=$(bc <<< "$BALANCE - $GAS_BUFFER")
     if [[ $SEND_AMOUNT =~ - ]]
     then
         echolog "Nothing delegate: $DELEGATE_AMOUNT"
