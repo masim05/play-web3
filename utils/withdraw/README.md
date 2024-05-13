@@ -8,7 +8,7 @@ The script does pretty much the same as [auto-withdraw-delegate](https://github.
 by [@Pretid](https://github.com/Pretid) (without installer though), however
 reusable for different networks and keeps your host machine a bit more secure.
 
-# Installation and setup
+### Installation and setup
 Download the script, review it:
 ```bash
 curl -o withdraw.sh https://raw.githubusercontent.com/masim05/play-web3/main/utils/withdraw/withdraw.sh
