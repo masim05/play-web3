@@ -21,3 +21,5 @@ Add a daily job to cron:
 cron_job="01 01 * * * ENV_FILE=`pwd`/.env bash `pwd`/withdraw.sh >> $HOME/withdraw.log 2>&1"
 (crontab -l ; echo "$cron_job") | crontab -
 ```
+
+Enjoy receiving notifications about successful re-delegations!
