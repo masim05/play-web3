@@ -13,7 +13,12 @@ Download the script, review it:
 ```bash
 curl -o withdraw.sh https://raw.githubusercontent.com/masim05/play-web3/main/utils/withdraw/withdraw.sh
 ```
-Create a proper `.env` file in the same directory, check pre-filled examples for
+Create `.env` file with proper permissions file in the same directory:
+```bash
+touch .env
+chmod 600 .env
+```
+Then fill it with valid content, check pre-filled examples for
 [Galactica](https://github.com/masim05/play-web3/blob/main/utils/withdraw/.env.galactica.example) and
 [Zero-gravity](https://github.com/masim05/play-web3/blob/main/utils/withdraw/.env.0g.example).
 Add a daily job to cron:
