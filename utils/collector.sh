@@ -77,7 +77,7 @@ do
     [[ -z "${BALANCE}" ]] && { echolog "Couldn't get BALANCE, exiting."; exit 1; }
 
     SEND_AMOUNT=$(bc <<< "$BALANCE - $GAS_BUFFER")
-    if [[ $SEND_AMOUNT =~ - ]]
+    if [[ $SEND_AMOUNT =~ - || $SEND_AMOUNT -eq "0" ]]
     then
         echolog "Nothing delegate: $DELEGATE_AMOUNT"
         continue
