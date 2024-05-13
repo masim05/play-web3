@@ -19,7 +19,7 @@ notify_telegram () {
     [[ $response_code -ne 200 ]] && { echolog "Telegram notification failed."; }
 }
 
-assert_binary_instaled () {
+assert_binary_installed () {
     PATH_TO_BINARY=`which $1`
     [[ -z "${PATH_TO_BINARY}" ]] && { echolog "$1 not found, exiting."; exit 1; };
 }
@@ -45,8 +45,8 @@ source $ENV_FILE
 # Check required binaries are
 # installed
 # ============================
-assert_binary_instaled "jq"
-assert_binary_instaled "bc"
+assert_binary_installed "jq"
+assert_binary_installed "bc"
 
 # ============================
 # TODO:
