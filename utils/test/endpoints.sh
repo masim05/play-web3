@@ -14,12 +14,18 @@ test () {
 
 test "https://rpc.alignedlayer.crptmax.com/"
 test "https://api.alignedlayer.crptmax.com/"
+test "https://rpc.alignedlayer-t.crptmax.com/"
+test "https://api.alignedlayer-t.crptmax.com/"
 
 test "https://rpc.galactica.crptmax.com/"
 test "https://api.galactica.crptmax.com/"
+test "https://rpc.galactica-t.crptmax.com/"
+test "https://api.galactica-t.crptmax.com/"
 
 test "https://rpc.0g.crptmax.com/"
 test "https://api.0g.crptmax.com/" 501
+test "https://rpc.0g-t.crptmax.com/"
+test "https://api.0g-t.crptmax.com/" 501
 
-#test "https://rpc.band.crptmax.com/"
-#test "https://api.band.crptmax.com/"
+test "https://rpc.band.crptmax.com/"
+test "https://api.band.crptmax.com/" 501
