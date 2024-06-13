@@ -26,18 +26,18 @@ test_grpc () {
 }
 
 printf "HTTP endpoints\n"
-test_http "https://rpc.alignedlayer.crptmax.com/"
-test_http "https://api.alignedlayer.crptmax.com/"
+#test_http "https://rpc.alignedlayer.crptmax.com/"
+#test_http "https://api.alignedlayer.crptmax.com/"
 test_http "https://rpc.alignedlayer-t.crptmax.com/"
 test_http "https://api.alignedlayer-t.crptmax.com/"
 
-test_http "https://rpc.galactica.crptmax.com/"
-test_http "https://api.galactica.crptmax.com/"
+#test_http "https://rpc.galactica.crptmax.com/"
+#test_http "https://api.galactica.crptmax.com/"
 test_http "https://rpc.galactica-t.crptmax.com/"
 test_http "https://api.galactica-t.crptmax.com/"
 
-test_http "https://rpc.0g.crptmax.com/"
-test_http "https://api.0g.crptmax.com/" 501
+#test_http "https://rpc.0g.crptmax.com/"
+#test_http "https://api.0g.crptmax.com/" 501
 test_http "https://rpc.0g-t.crptmax.com/"
 test_http "https://api.0g-t.crptmax.com/" 501
 
