@@ -51,8 +51,8 @@ test_ws "rpc.galactica-t.crptmax.com"
 test_ws "rpc.0g-t.crptmax.com"
 
 printf "\ngRPC endpoints\n"
-test_grpc "grpc.band.crptmax.com:26443"
-test_grpc "grpc.galactica-t.crptmax.com:22443"
+test_grpc "grpc.band.crptmax.com:27443"
+test_grpc "grpc.galactica-t.crptmax.com:20443"
 test_grpc "grpc.alignedlayer-t.crptmax.com:23443"
 test_grpc "grpc.0g-t.crptmax.com:21443"
 
