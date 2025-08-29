@@ -12,6 +12,11 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "mexc-api-sdk": "^1.0.3"
+        "dotenv": "^17.2.1",
+        "mexc-api-sdk": "^1.0.3",
+        "zod": "^4.1.5"
+    },
+    "devDependencies": {
+        "@types/node": "^24.3.0"
     }
 }
